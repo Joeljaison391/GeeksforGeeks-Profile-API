@@ -164,7 +164,7 @@
           const response = await fetch(`/api/profile/${username}`);
           const data = await response.json();
           console.log(data);
-          resultDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+          resultDiv.innerHTML = `<pre >${JSON.stringify(data, null, 2)}</pre>`;
         } catch (error) {
           resultDiv.innerHTML = "Failed to fetch profile data";
         }
