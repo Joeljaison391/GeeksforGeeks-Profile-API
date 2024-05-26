@@ -4,121 +4,155 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GeeksforGeeks Profile API Documentation</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .container {
-        width: 80%;
-        max-width: 800px;
-        margin-top: 20px;
-      }
-      h1 {
-        text-align: center;
-      }
-      .api-section {
-        margin-bottom: 20px;
-      }
-      .input-group {
-        margin-bottom: 10px;
-      }
-      .input-group label {
-        display: block;
-        margin-bottom: 5px;
-      }
-      .input-group input {
-        width: 100%;
-        padding: 8px;
-        box-sizing: border-box;
-      }
-      .input-group button {
-        padding: 10px 20px;
-        cursor: pointer;
-      }
-      .result {
-        margin-top: 20px;
-        padding: 10px;
-        background-color: #f4f4f4;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-      }
-      .dsa-card {
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        padding: 20px;
-        background-color: #ffffff;
-        margin-bottom: 20px;
-      }
-      .dsa-card img {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        margin-right: 20px;
-      }
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
-      @keyframes moveDot {
-  0%,
-  100% {
-    top: 10%;
-    right: 10%;
-  }
-  25% {
-    top: 10%;
-    right: calc(100% - 55px);
-  }
-  50% {
-    top: calc(100% - 30px);
-    right: calc(100% - 55px);
-  }
-  75% {
-    top: calc(100% - 30px);
-    right: 10%;
-  }
-}
-    </style>
   </head>
   <body>
     <div class="container">
       <h1>GeeksforGeeks Profile API Documentation</h1>
 
-      <div class="api-section">
-        <h2>Get Profile</h2>
-        <div class="input-group">
-          <label for="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            placeholder="Enter GeeksforGeeks username"
-          />
-        </div>
-        <div class="input-group">
-          <button onclick="fetchProfile()">Fetch Profile</button>
-        </div>
-        <div class="result" id="profileResult"></div>
+      <div class="section">
+        <h2>Overview</h2>
+        <p>
+          This API allows you to fetch the profile details of users on
+          GeeksforGeeks. You can retrieve information such as name, username,
+          profile picture, rank, scores, institution, and the number of problems
+          solved.
+        </p>
       </div>
 
-      <div class="api-section">
-        <h2>Generate DSA Card</h2>
-        <div class="input-group">
-          <label for="usernameCard">Username:</label>
-          <input
-            type="text"
-            id="usernameCard"
-            placeholder="Enter GeeksforGeeks username"
-          />
+      <div class="section">
+        <h2>Authentication</h2>
+        <p>No authentication is required to access this API.</p>
+      </div>
+
+      <div class="section">
+        <h2>API Documentation</h2>
+        <div class="endpoint">
+          <p>
+            <strong>Endpoint:</strong>
+            https://gfg-api-5636a15dd742.herokuapp.com/api/profile/<span
+              >:username</span
+            >
+          </p>
+          <p><strong>Method:</strong> GET</p>
+          <p><strong>Params:</strong> username</p>
+          <p><strong>Response:</strong> JSON</p>
+          <p>
+            <strong>Response Structure:</strong><br />
+            name: name<br />
+            username: username<br />
+            profilePicture: profilePicture<br />
+            rank: rank<br />
+            monthlyScore: monthlyScore<br />
+            overallScore: overallScore<br />
+            institution: institution<br />
+            solvedProblemsCount: solvedProblemsCount<br />
+            solvedProblems: [ {question: question, link: link}, ... ]
+          </p>
         </div>
-        <div class="input-group">
-          <button onclick="generateDSACard()">Generate DSA Card</button>
-          <button onclick="copyEmbeddableHTML()">Copy Embeddable HTML</button>
+      </div>
+
+      <div class="section">
+        <h2>Sample Response</h2>
+        <pre class="sample-response">
+    {
+      "name": "joeljaison394",
+      "username": "joeljaison394",
+      "institution": "Sahrdaya College of Engineering and Technology (SCET) Thrissur",
+      "languages": "Java, C++, Javascript",
+      "rank": "3",
+      "overallScore": "334",
+      "solvedProblemsCount": "97",
+      "longestStreak": "28/1028",
+      "monthlyScore": "__",
+      "totalSubmissions": 0,
+      "solvedProblems": [
+        {
+          "question": "Occurence of an integer in a Linked List",
+          "link": "https://www.geeksforgeeks.org/problems/occurence-of-an-integer-in-a-linked-list/0"
+        },
+        {
+          "question": "Finding middle element in a linked list",
+          "link": "https://www.geeksforgeeks.org/problems/finding-middle-element-in-a-linked-list/0"
+        },
+        ...
+      ]
+    }
+          </pre
+        >
+      </div>
+
+      <div class="section">
+        <h2>Test Live</h2>
+        <div class="api-section">
+          <h3>Get Profile</h3>
+          <div class="input-group">
+            <label for="username">Username:</label>
+            <input
+              type="text"
+              id="username"
+              placeholder="Enter GeeksforGeeks username"
+            />
+          </div>
+          <div class="input-group">
+            <button onclick="fetchProfile()">Fetch Profile</button>
+          </div>
+          <div class="result" id="profileResult"></div>
         </div>
-        <div class="result" id="dsaCardResult"></div>
+
+        <div class="api-section">
+          <h3>Generate DSA Card</h3>
+          <div class="input-group">
+            <label for="usernameCard">Username:</label>
+            <input
+              type="text"
+              id="usernameCard"
+              placeholder="Enter GeeksforGeeks username"
+            />
+          </div>
+          <div class="input-group">
+            <button onclick="generateDSACard()">Generate DSA Card</button>
+            <button onclick="copyEmbeddableHTML()">Copy Embeddable HTML</button>
+          </div>
+          <div class="result" id="dsaCardResult"></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Rate Limits</h2>
+        <p>
+          This API has a rate limit of 100 requests per 30 minutes per IP
+          address. If you exceed this limit, you will receive the following
+          message: "Too many requests from this IP, please try again after 15
+          minutes".
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>Contact</h2>
+        <p>
+          If you have any questions or need further assistance, please contact
+          us at joeljaison394@gmail.com
+        </p>
       </div>
     </div>
+
+    <footer>
+      <p>Made with ❤️ by Joel Jaison</p>
+      <a
+        href="https://github.com/Joeljaison391/GeeksforGeeks-Profile-API"
+        target="_blank"
+      >
+        <img
+          src="github.gif"
+          alt="GitHub"
+          class="github-icon"
+          style="border-radius: 100px; height: 40px; width: 40px"
+        />
+      </a>
+    </footer>
 
     <script>
       async function fetchProfile() {
@@ -129,6 +163,7 @@
         try {
           const response = await fetch(`/api/profile/${username}`);
           const data = await response.json();
+          console.log(data);
           resultDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
         } catch (error) {
           resultDiv.innerHTML = "Failed to fetch profile data";
@@ -145,23 +180,23 @@
           const profileData = await response.json();
 
           const dsaCardHTML = `
-          <div class="outer" style="width: 550px; height: 300px; border-radius: 10px; padding: 1px; background: radial-gradient(circle 230px at 0% 0%, #ffffff, #0c0d0d); position: relative; font-family: Arial, sans-serif;">
-  <div class="dot" style="width: 5px; aspect-ratio: 1; position: absolute; background-color: #fff; box-shadow: 0 0 10px #ffffff; border-radius: 100px; z-index: 2; right: 10%; top: 10%; animation: moveDot 6s linear infinite;"></div>
-  <div class="card" style="z-index: 1; width: 100%; height: 100%; border-radius: 9px; border: solid 1px #202222; background-size: 20px 20px; background: radial-gradient(circle 280px at 0% 0%, #444444, #0c0d0d); display: flex; align-items: center; justify-content: center; position: relative; flex-direction: column; color: #fff;">
-    <div class="ray" style="width: 320px; height: 45px; border-radius: 100px; position: absolute; background-color: #c7c7c7; opacity: 0.4; box-shadow: 0 0 50px #fff; filter: blur(10px); transform-origin: 10%; top: 0%; left: 0; transform: rotate(40deg);"></div>
-    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #ddd; padding-bottom: 10px; width: 80%; margin-top: 20px;">
-      <img src="${profileData.profilePicture}" alt="Profile Picture" onerror="this.src='https://i.pinimg.com/736x/0d/64/98/0d64989794b1a4c9d89bff571d3d5842.jpg'" style="width: 70px; height: 70px; border-radius: 50%; margin: 0;">
-      <h2 style="color: #fff; font-size: 1.2em;">${profileData.name}</h2>
-    </div>
-    <div style="display: flex; flex-direction: column; padding-top: 10px; width: 80%; text-align: left;">
-      <p style="margin: 5px 0; color: #fff;"><strong>Rank:</strong> ${profileData.rank}</p>
-      <p style="margin: 5px 0; color: #fff;"><strong>College:</strong> ${profileData.institution}</p>
-      <p style="margin: 5px 0; color: #fff;"><strong>Coding Score:</strong> ${profileData.overallScore}</p>
-      <p style="margin: 5px 0; color: #fff;"><strong>Total Solved:</strong> ${profileData.solvedProblemsCount}</p>
-    </div>
-  </div>
-</div>
-        `;
+        <div class="outer">
+          <div class="card">
+            <div class="ray"></div>
+            <div class="card-header">
+              <img src="${profileData.profilePicture}" alt="Profile Picture" onerror="this.src='https://i.pinimg.com/736x/0d/64/98/0d64989794b1a4c9d89bff571d3d5842.jpg'">
+              <h2>${profileData.name}</h2>
+            </div>
+            <div class="card-details">
+              <p class="rank"><strong>Rank:</strong> ${profileData.rank}</p>
+              <p><strong>College:</strong> ${profileData.institution}</p>
+              <p><strong>Coding Score:</strong> ${profileData.overallScore}</p>
+              <p><strong>Total Solved:</strong> ${profileData.solvedProblemsCount}</p>
+              <img src="./gfg-logo.png" alt="DSA Card" class="dsaCard">
+            </div>
+          </div>
+        </div>
+      `;
           resultDiv.innerHTML = dsaCardHTML;
         } catch (error) {
           resultDiv.innerHTML = "Failed to generate DSA card";
@@ -172,7 +207,25 @@
         const dsaCardResult = document.getElementById("dsaCardResult");
         const dsaCardHTML = dsaCardResult.innerHTML;
 
-        // Logic to copy dsaCardHTML to clipboard
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = dsaCardHTML;
+        document.body.appendChild(tempDiv);
+
+        const range = document.createRange();
+        range.selectNode(tempDiv);
+
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+
+        try {
+          document.execCommand("copy");
+          alert("DSA Card HTML copied to clipboard!");
+        } catch (err) {
+          console.error("Failed to copy: ", err);
+        }
+
+        document.body.removeChild(tempDiv);
       }
     </script>
   </body>
