@@ -115,6 +115,7 @@
           <div class="input-group">
             <button onclick="generateDSACard()">Generate DSA Card</button>
             <button onclick="copyEmbeddableHTML()">Copy Embeddable HTML</button>
+            <button onclick="downloadDSACardAsImage()">Download as Image</button>
           </div>
           <div class="result" id="dsaCardResult"></div>
         </div>
@@ -227,6 +228,26 @@
 
         document.body.removeChild(tempDiv);
       }
+
+      async function downloadDSACardAsImage() {
+    const dsaCardResult = document.getElementById("dsaCardResult");
+    if (!dsaCardResult) return;
+
+    try {
+        const canvas = await html2canvas(dsaCardResult);
+        const image = canvas.toDataURL("image/png");
+
+        // Create a temporary link to trigger the download
+        const link = document.createElement("a");
+        link.href = image;
+        link.download = "dsa-card.png";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    } catch (error) {
+        console.error("Failed to capture the DSA card as an image:", error);
+    }
+}
     </script>
   </body>
 </html>
