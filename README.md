@@ -47,6 +47,7 @@ The GeeksforGeeks Profile API allows you to fetch detailed profile information o
   ]
 }
 
+```
 ### Usage
 
 #### Get Profile
@@ -73,3 +74,4 @@ For any queries or support, please contact the project maintainer:
 
 GitHub: [Joeljaison391](https://github.com/Joeljaison391)  
 Made with ❤️ by Joel Jaison.
+
