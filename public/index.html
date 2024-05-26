@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeeksforGeeks Profile API Documentation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .container {
+      width: 80%;
+      max-width: 800px;
+      margin-top: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .api-section {
+      margin-bottom: 20px;
+    }
+    .api-section h2 {
+      margin-top: 0;
+    }
+    .input-group {
+      margin-bottom: 10px;
+    }
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    .input-group button {
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f4f4f4;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>GeeksforGeeks Profile API Documentation</h1>
+
+    <div class="api-section">
+      <h2>Get Profile</h2>
+      <div class="input-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Enter GeeksforGeeks username">
+      </div>
+      <div class="input-group">
+        <button onclick="fetchProfile()">Fetch Profile</button>
+      </div>
+      <div class="result" id="profileResult"></div>
+    </div>
+
+    <div class="api-section">
+      <h2>Get DSA Card</h2>
+      <div class="input-group">
+        <label for="usernameCard">Username:</label>
+        <input type="text" id="usernameCard" placeholder="Enter GeeksforGeeks username">
+      </div>
+      <div class="input-group">
+        <button onclick="fetchDSACard()">Fetch DSA Card</button>
+      </div>
+      <div class="result" id="dsaCardResult"></div>
+    </div>
+  </div>
+
+  <script>
+    async function fetchProfile() {
+      const username = document.getElementById('username').value;
+      const resultDiv = document.getElementById('profileResult');
+      resultDiv.innerHTML = 'Loading...';
+
+      try {
+        const response = await fetch(`/api/profile/${username}`);
+        const data = await response.json();
+        resultDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+      } catch (error) {
+        resultDiv.innerHTML = 'Failed to fetch profile data';
+      }
+    }
+
+    async function fetchDSACard() {
+      const username = document.getElementById('usernameCard').value;
+      const resultDiv = document.getElementById('dsaCardResult');
+      resultDiv.innerHTML = 'Loading...';
+
+      try {
+        const response = await fetch(`/api/profile/${username}/dsa-card`);
+        const data = await response.json();
+        resultDiv.innerHTML = `<img src="${data.imageUrl}" alt="DSA Card">`;
+      } catch (error) {
+        resultDiv.innerHTML = 'Failed to fetch DSA card';
+      }
+    }
+  </script>
+</body>
+</html>
