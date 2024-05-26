@@ -4,6 +4,6 @@ const { profileRateLimiter } = require('../utils/rateLimiter');
 const router = express.Router();
 
 router.get('/profile/:username', profileRateLimiter, getProfile);
-router.get('/profile/:username/dsa-card', profileRateLimiter, getDSACard);
+// router.get('/profile/:username/dsa-card', profileRateLimiter, getDSACard);
 
 module.exports = router;

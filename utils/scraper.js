@@ -32,7 +32,6 @@ const profileImg = imageUrlElement.length > 0 ? imageUrlElement.attr('src') : 'N
 
     const solvedProblems = [];
 
-    // Iterate over each list item in the problem list
     $('.problemList_head_list_item__RlO_s').each((_, element) => {
       const question = $(element).find('.problemList_head_list_item_link__dhmtd').text().trim();
       const link = $(element).find('.problemList_head_list_item_link__dhmtd').attr('href');
