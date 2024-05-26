@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
-          heroku_api_key: HRKU-3d6bd7d9-265a-40d9-bb56-6927f39fc9f4
-          heroku_app_name: "gfg-api" 
-          heroku_email: "joeljaison394@proton.me"
-          procfile: "web:node app.js"
+           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+           heroku_app_name: ${{ secrets.HEROKU_APP_NAME}}
+           heroku_email: ${{ secrets.HEROKU_EMAIL}} 
+           procfile: "web:node app.js"
