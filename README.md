@@ -17,7 +17,7 @@ The GeeksforGeeks Profile API allows you to fetch detailed profile information o
 
 ### Endpoints
 
-**Endpoint:** `https://gfg-api-5636a15dd742.herokuapp.com/api/profile/:username`  
+**Endpoint:** `https://worktrack.azurewebsites.net/api/profile/:username`  
 **Method:** `GET`  
 **Params:** `username` - The username of the GeeksforGeeks user whose profile you want to fetch.  
 **Response:** JSON containing profile details.
